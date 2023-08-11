@@ -1,0 +1,262 @@
+/*Create database named college_database*/
+
+create database college_database;
+
+/*to check whether the database is created or not */
+show databases;
+
+/*to make changes to college_database*/
+use college_database;
+
+/*to create department table*/
+CREATE TABLE departments (
+  id int(11) NOT NULL,
+  name varchar(30) NOT NULL,
+  primary key(id)
+) ;
+
+/*inserting values into departments table*/
+INSERT INTO departments (id,name) VALUES
+(1, 'Mechanical'),
+(2,'Civil'),
+(3,'Compueter Science'),
+(4, 'Information Technology'),
+(5,'Electronics and communication'),
+(6,'Electrical and Electronics'),
+(7,'Petroleum'),
+(8,'Aerospace'),
+(9,'Automobile'),
+(10,'Aeronautical');
+
+/*to display all the tables created*/
+show tables;
+
+/*to create faculty table*/
+CREATE TABLE faculty (
+  id int(11) NOT NULL,
+  name varchar(25) NOT NULL,
+  department_id int(11) NOT NULL,
+  phone int(20) DEFAULT NULL,
+primary key(id),foreign key(department_id) references departments(id)
+);
+
+/*to insert records into faculty table*/
+INSERT INTO faculty (id, name, department_id, phone) VALUES
+(1, 'Manisha', 1, '9845167849'),
+(2, 'Anil', 1, '7785461895'),
+(3, 'Vijayalakshmi', 2, '8983547891'),
+(4, 'Adityakumar', 2, '9890451786'),
+(5, 'Shubhangi',3, '9422185769'),
+(6, 'Minal', 3, '7986523467'),
+(7, 'Renuka', 4, '8945679876'),
+(8, 'Tanveer', 4, '8578093456'),
+(9, 'Afroz', 5, '9856345676'),
+(10, 'Raghavendra', 5, '7873456543'),
+(11, 'Ravi', 6, '9811267849'),
+(12, 'Swapnil', 6, '9875261895'),
+(13, 'Shanaz', 7, '801237891'),
+(14, 'Almaz', 7, '9563451786'),
+(15, 'Shivani',8, '7542385769'),
+(16, 'Farhan', 8, '9653423467'),
+(17, 'Krisha', 9, '6361279876'),
+(18, 'Mazahir', 9, '6532493456'),
+(19, 'Akram', 10, '653415676'),
+(20, 'Ravindran', 10, '6789756543');
+
+/*create students table*/
+CREATE TABLE students (
+  rollno int(11) NOT NULL,
+  name varchar(25) NOT NULL,
+  department_id int(11) not NULL,
+  phone int(20) DEFAULT NULL,
+  admission_date date NOT NULL,
+  cet_no int(11) NOT NULL,
+  faculty_id int(10) not null,
+primary key(rollno),
+foreign key(department_id) references departments(id),
+foreign key(faculty_id) references faculty(id)
+);
+
+/*Insert records into students table*/
+INSERT INTO students (rollno, name, department_id, phone, admission_date, cet_no, faculty_id) VALUES
+(101, 'Vinod', 1, '7474986413', '2017-08-01', 107,1),
+(102, 'Adwait', 1, '8862451783', '2017-08-01', 113,1),
+(103, 'Aashay', 2, '9029742685', '2017-08-21', 140,1),
+(104, 'Atharva', 2, '7093458923', '2017-08-21', 132,2),
+(105, 'Rashmi', 3, '9552514123', '2017-08-01', 125, 2),
+(106, 'Shivam', 3, '7415487595', '2017-08-21', 141, 2),
+(107, 'Sunanda', 4, '9423165742', '2017-08-21', 130, 3),
+(108, 'Sagar', 4, '9545791532', '2017-08-21', 150, 3),
+(109, 'Shreya', 5, '7093458923', '2017-08-21', 131, 3),
+(110, 'hannan', 5, '6323432235', '2017-08-21', 556, 4),
+(111, 'adnan', 6, '7652136413', '2018-09-23', 126,4),
+(112, 'zaid', 6, '8863351783', '2018-09-23', 174,4),
+(113, 'mehboob', 7, '9975342685', '2018-09-23', 123,5),
+(114, 'Abdulah', 7, '772358923', '2018-09-23', 111,5),
+(115, 'jadav', 8, '9764244123', '2018-09-23', 122, 5),
+(116, 'Shanaz', 8, '7434287595', '2018-09-25', 144, 6),
+(117, 'Sundara', 9, '9454265742', '2018-09-25', 134, 6),
+(118, 'Sharanya', 9, '9423491532', '2018-09-25', 154, 6),
+(119, 'Smitha', 10, '797238923', '2018-09-25', 154, 7),
+(120, 'Reddy', 10, '652462235', '2018-09-26', 545, 7);
+(121, 'altaf', 1, '6274986413', '2019-03-01', 078,8),
+(122, 'sikandar', 1, '6562451783', '2019-03-01', 011,16),
+(123, 'sukhvinder', 2, '6229742685', '2019-03-21', 140,8),
+(124, 'samad', 2, '6193458923', '2019-03-21', 032,9),
+(125, 'faraz', 3, '6952514123', '2019-03-01', 025, 9),
+(126, 'Saaim', 3, '7115487595', '2019-03-21', 041, 10),
+(127, 'fazle', 4, '7123165742', '2019-03-21', 030, 10),
+(128, 'mohsin', 4, '7345791532', '2019-03-21', 050, 11),
+(129, 'Shaiz', 5, '7293458923', '2019-03-21', 031, 11),
+(130, 'mannan', 5, '7923432235', '2019-03-21', 756, 11)
+(131, 'aqib', 6, '8852136413', '2020-05-23', 726,12),
+(132, 'mazhar', 6, '8463351783', '2020-05-23', 774,12),
+(133, 'azhar', 7, '8975342685', '2020-05-23', 723,13),
+(134, 'zuhair', 7, '852358923', '2020-05-23', 511,12),
+(135, 'kamil', 8, '8464244123', '2020-05-23', 422, 14),
+(136, 'john', 8, '9734287595', '2020-05-25', 344, 14),
+(137, 'daniel', 9, '9854265742', '2020-05-25', 234, 15),
+(138, 'panda', 9, '9223491532', '2020-05-25', 254, 16),
+(139, 'kouser', 10, '907238923', '2020-05-25', 254, 17),
+(140, 'zahid', 10, '912462235', '2020-05-26', 145, 19);
+
+/*create marks table for students*/
+CREATE TABLE marks (
+  id int(11) NOT NULL,
+  rollno int(11) NOT NULL,
+  subject_id varchar(11) NOT NULL,
+  marks int(11) NOT NULL,
+ primary key(id),
+ foreign key(rollno) references students(rollno)
+);
+
+/*insert records into marks table*/
+INSERT INTO marks (id, rollno, subject_id, marks) VALUES
+(1, 101, 'cse', 80),
+(2, 102, 'cse', 70),
+(3, 103, 'cse', 90),
+(4, 104, 'cse', 80),
+(5, 105, 'cse', 80),
+(6, 106, 'mat', 80),
+(7, 107, 'mat', 90),
+(8, 108, 'mat', 80),
+(9, 109, 'mat', 70),
+(10, 110, 'mat', 73),
+(11, 111, 'eng', 0);
+(12, 112, 'eng', 21),
+(13, 113, 'eng', 23),
+(14, 114, 'eng', 35),
+(15, 115, 'eng', 81)
+(16, 116, 'ise', 85),
+(17, 117, 'ise', 65),
+(18, 118, 'ise', 56),
+(19, 119, 'ise', 23),
+(20, 120, 'ise',12),
+(21, 121, 'law', 23),
+(22, 122, 'law', 56),
+(23, 123, 'law', 67),
+(24, 124, 'law', 78),
+(25, 125, 'law', 56),
+(26, 126, 'mgt',46),
+(27, 127, 'mgt', 57),
+(28, 128, 'mgt', 15),
+(29, 129, 'mgt', 35),
+(30, 130, 'mgt', 99),
+(31, 131, 'py', 43),
+(32, 132, 'py', 66),
+(33, 133, 'py', 77),
+(34, 134, 'py', 38),
+(35, 135, 'py', 26),
+(36, 136, 'java',46),
+(37, 137, 'java', 67),
+(38, 138, 'java', 85),
+(39, 139, 'java', 65),
+(40, 140, 'web', 100);
+
+/*Trigger students*/
+CREATE TRIGGER `delete_student` BEFORE DELETE ON `students` FOR EACH ROW DELETE FROM marks WHERE rollno = OLD.rollno;
+
+/*Create subjects table*/
+CREATE TABLE subjects (
+  id int(11) NOT NULL,
+  department_id int(11) NOT NULL,
+  name varchar(50) NOT NULL,
+  faculty_id int(11) NOT NULL,
+primary key(id),
+foreign key(department_id) references departments(id),
+foreign key(faculty_id) references faculty(id)
+);
+
+/*Insert records into subjects table*/
+INSERT INTO subjects (id, department_id, name, faculty_id) VALUES
+(201, 1, 'java', 1)
+(202, 2, 'mgt', 1)
+(203, 3, 'py', 1)
+(204, 4, 'law', 1)
+(205, 5, 'ise', 1)
+(206, 6, 'eng', 1)
+(207, 7, 'mat', 1)
+(208, 8, 'cse', 1)
+(209, 9, 'web', 1)
+(210, 10, 'os', 1);
+
+/*Display all the tables*/
+select * from departments;
+select * from faculty;
+select * from students;
+select * from marks;
+select * from subjects;
+
+/*Description of the tables*/
+desc departments;
+desc faculty;
+desc students;
+desc marks;
+desc subjects;
+
+/*Modify the datatype of the column in marks table*/
+ alter table marks modify marks float;
+
+/*Alter the marks table by adding a new field grade where the default grade is 'A'*/
+alter table marks add grade varchar(2) default 'A';
+
+/*update the marks table by updating the grade respects to their marks*/
+update marks set grade='O' where marks>=90;
+update marks set grade='A+' where marks>=80 and marks<90;
+update marks set grade='A' where marks>=70 and marks<80;
+update marks set grade='B' where marks>=60 and marks<70;
+update marks set grade='B+' where marks>=50 and marks<60;
+update marks set grade='C' where marks>=40 and marks<50;
+update marks set grade='F' where marks<35;
+
+/*Retrieve the highest marks from the marks table*/
+select max(marks) from marks;
+
+/*Retrieve the marks having count more than three*/
+select marks from marks group by marks having count(*)>3;
+
+/*Display the names of students in alplabetical order*/
+ select name from students order by name;
+
+/*Displaying the name from students table and marks from marks table*/
+ select name,marks from students s join marks m on s.rollno=m.rollno;
+
+/*Trigger students*/
+CREATE TRIGGER `delete_student` BEFORE DELETE ON `students` FOR EACH ROW DELETE FROM marks WHERE rollno = OLD.rollno;
+
+/*Create a procedure*/
+DELIMITER $$
+CREATE PROCEDURE calculate_pointer(IN roll_num INT, IN date INT, OUT pointer int)
+BEGIN
+	SELECT avg(marks.marks) INTO pointer
+
+	FROM marks JOIN subjects ON marks.subject_id = subjects.id
+
+	WHERE marks.rollno = rollno
+	AND marks.subject_id IN (SELECT subjects.id FROM subjects, students	
+	WHERE subjects.department_id = students.department_id
+	AND students.roll_num = roll_num);
+
+END $$	
+DELIMITER ;
+

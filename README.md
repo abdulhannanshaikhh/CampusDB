@@ -49,4 +49,6 @@ PHP MySQL Functions: PHP provides a set of built-in functions for connecting to 
 
 Dynamic Content Generation:
 PHP Loops and Conditional Statements: PHP's programming capabilities enable the generation of dynamic content, such as displaying lists of departments, faculty members, students, subjects, and their respective details.
+
+...........................................................................................................................................................................
   
